@@ -15,9 +15,9 @@ import { useRef } from "react"
 
 export default function Checkout({ cartId }: { cartId: string }) {
 
-    let detailsInput = useRef<HTMLInputElement | null>(null);
-    let cityInput = useRef<HTMLInputElement | null>(null);
-    let phoneInput = useRef<HTMLInputElement | null>(null);
+    const detailsInput = useRef<HTMLInputElement | null>(null);
+    const cityInput = useRef<HTMLInputElement | null>(null);
+    const phoneInput = useRef<HTMLInputElement | null>(null);
 
     async function checkOutSession() {
 

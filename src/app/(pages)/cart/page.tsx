@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CartResponse } from "@/interfaces";
 import { Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -15,7 +16,7 @@ export default function Cart() {
 
 
 
-  let { cartData, isLoading, getCart, setCartData } = useContext(cartContext)
+  const { cartData, isLoading, getCart, setCartData } = useContext(cartContext)
 
   const [removingId, setRemovingId] = useState<string | null>(null)
   const [updateId, setUpdateId] = useState<string | null>(null)
@@ -99,7 +100,7 @@ export default function Cart() {
 
   return <>
 
-    {isLoading || typeof cartData?.data.products[0]?.product == 'string' ? <Loading /> : cartData?.numOfCartItems! > 0 ?
+    {isLoading || typeof cartData?.data.products[0]?.product == 'string' ? <Loading /> : (cartData?.numOfCartItems ?? 0) > 0 ?
       <div className="container  mx-auto p-6 ">
         <h1 className="text-3xl font-bold mb-2">Shopping Cart</h1>
         <p className="text-gray-500 mb-6">{cartData?.numOfCartItems} items in your cart</p>
@@ -111,9 +112,11 @@ export default function Cart() {
               className="xl:col-span-2">
               <div className="flex items-center justify-between border rounded-lg p-4 shadow-sm">
                 {/* Product Image */}
-                <img
+                <Image
                   src={product.product.imageCover}
                   alt="Product"
+                  width={96}
+                  height={96}
                   className="w-24 h-24 rounded-lg object-cover"
                 />
 
@@ -182,7 +185,7 @@ export default function Cart() {
                 <span>EGP {cartData?.data.totalCartPrice}</span>
               </div>
 
-              <Checkout cartId={cartData?.cartId!} />
+              <Checkout cartId={cartData?.cartId ?? ''} />
 
               <Link href={'/products'}>
                 <button className="w-full border py-2 mt-2 rounded-lg hover:bg-gray-100">

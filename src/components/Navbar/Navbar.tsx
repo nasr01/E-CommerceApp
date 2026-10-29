@@ -2,13 +2,9 @@
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import Link from "next/link"
 import {
@@ -16,7 +12,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Loader2, ShoppingCartIcon, UserIcon } from "lucide-react"
@@ -71,6 +66,12 @@ export default function Navbar() {
                   <Link href={"/profile"}>
                     <DropdownMenuItem>
                       Profile
+                    </DropdownMenuItem>
+                  </Link>
+
+                  <Link href={"/allorders"}>
+                    <DropdownMenuItem>
+                      My Orders
                     </DropdownMenuItem>
                   </Link>
 

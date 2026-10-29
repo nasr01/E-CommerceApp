@@ -1,7 +1,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedPages = ['/cart', '/profile']
+const protectedPages = ['/cart', '/profile', '/allorders']
 const authPages = ['/login', '/register']
 
 export default async function middleware(req: NextRequest) {
@@ -20,7 +20,7 @@ export default async function middleware(req: NextRequest) {
         if (!token) {
             return NextResponse.next();
         } else {
-            let redirectUrl = new URL('/', process.env.NEXTAUTH_URL)
+            const redirectUrl = new URL('/', process.env.NEXTAUTH_URL)
             redirectUrl.searchParams.set('callback-url', req.nextUrl.pathname)
             return NextResponse.redirect(redirectUrl)
         }

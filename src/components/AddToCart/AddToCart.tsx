@@ -13,9 +13,9 @@ import { useRouter } from 'next/navigation'
 export default function AddToCart({ productId }: { productId: string }) {
     const [isLoading, setIsLoading] = useState(false)
 
-    const { getCart, setCartData } = useContext(cartContext)
+    const { setCartData } = useContext(cartContext)
     const session = useSession();
-    let router = useRouter()
+    const router = useRouter()
     async function addProductToCart() {
 
         if (session.status == 'authenticated') {
@@ -24,7 +24,9 @@ export default function AddToCart({ productId }: { productId: string }) {
             // await getCart();
             setCartData(data);
 
-            data.status == 'success' && toast.success(data.message);
+            if (data.status == 'success') {
+                toast.success(data.message);
+            }
 
             setIsLoading(false);
 

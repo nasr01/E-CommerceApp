@@ -3,8 +3,6 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import Image from "next/image"
@@ -18,7 +16,7 @@ export default function ProductSlider({ images, altContent }: { images: string[]
             ]}>
             <CarouselContent>
                 {images.map((img, index) =>
-                    <CarouselItem> <Image key={index} src={img} className='w-full' alt={altContent} width={600} height={600} /></CarouselItem>
+                    <CarouselItem key={index}> <Image src={img} className='w-full' alt={altContent} width={600} height={600} /></CarouselItem>
                 )}
             </CarouselContent>
         </Carousel>

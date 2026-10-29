@@ -2,7 +2,7 @@
 
 import { CartResponse } from '@/interfaces';
 import { useSession } from 'next-auth/react';
-import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useCallback, useEffect, useState } from 'react'
 
 export const cartContext = createContext<{
     cartData: CartResponse | null,
@@ -27,9 +27,10 @@ export default function CartContextProvider({ children }: { children: ReactNode 
 
     const [cartData, setCartData] = useState<CartResponse | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [userId, setuserId] = useState<string>('')
 
-    async function getCart() {
+    const session = useSession()
+
+    const getCart = useCallback(async () => {
 
         if (session.status == 'authenticated') {
 
@@ -37,23 +38,23 @@ export default function CartContextProvider({ children }: { children: ReactNode 
             const data: CartResponse = await response.json();
 
             setCartData(data);
-            if (cartData?.data.cartOwner) {
-                localStorage.setItem('userId', cartData?.data.cartOwner)
+            if (data?.data?.cartOwner) {
+                localStorage.setItem('userId', data.data.cartOwner)
 
             }
             console.log(data);
         }
         setIsLoading(false);
 
-    }
-    const session = useSession()
+    }, [session.status])
+    
     useEffect(() => {
         if (session.status == "authenticated") {
 
             getCart()
         }
 
-    }, [session.status])
+    }, [session.status, getCart])
 
     return <cartContext.Provider value={{ cartData, setCartData, isLoading, setIsLoading, getCart }}>
         {children}

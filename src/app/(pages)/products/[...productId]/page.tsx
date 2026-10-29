@@ -2,24 +2,19 @@ import { ProductI } from '@/interfaces';
 import { Params } from 'next/dist/server/request/params'
 import {
     Card,
-    CardAction,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import Image from 'next/image';
 import StarIcon from '@/components/Icons/StarIcon';
-import { Button } from '@/components/ui/button';
-import { HeartIcon, ShoppingCartIcon } from 'lucide-react';
 import ProductSlider from '@/components/Carousel/ProductSlider';
 import AddToCart from '@/components/AddToCart/AddToCart';
 
 
 export default async function ProductDetails({ params }: { params: Params }) {
 
-    let { productId } = await params;
+    const { productId } = await params;
 
     // console.log(productId);
 

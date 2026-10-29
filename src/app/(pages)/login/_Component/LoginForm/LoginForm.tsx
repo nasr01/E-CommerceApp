@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -31,7 +30,7 @@ type FormFields = z.infer<typeof formSchema>
 export function LoginForm() {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    let searchParams = useSearchParams();
+    const searchParams = useSearchParams();
     const callbackURL = searchParams.get('callback-url')
 
 
@@ -47,13 +46,12 @@ export function LoginForm() {
     // 2. Define a submit handler.
     async function onSubmit(values: FormFields) {
         setIsLoading(true)
-        const response = await signIn('credentials', {
+        await signIn('credentials', {
             callbackUrl: callbackURL ?? '/',
             redirect: true,
             email: values.email,
             password: values.password
         })
-        // console.log(response);
         setIsLoading(false)
 
 
