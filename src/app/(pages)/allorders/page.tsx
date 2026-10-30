@@ -75,7 +75,7 @@ export default function AllOrders() {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 px-4 md:px-20 py-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-4xl font-bold flex items-center gap-3">
                     <ShoppingBag className="size-10" />

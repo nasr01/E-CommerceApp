@@ -16,7 +16,7 @@ export default async function Brands() {
   const { data: brands }: { data: BrandI[] } = await response.json()
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4 md:px-20 py-6">
       <h1 className="text-4xl font-bold">All Brands</h1>
       
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">

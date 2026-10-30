@@ -85,7 +85,7 @@ export default function Profile() {
     }
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 px-4 md:px-20 py-6">
             {/* Profile Header */}
             <div className="flex items-center gap-6">
                 <div className="size-24 rounded-full bg-primary/10 flex items-center justify-center">

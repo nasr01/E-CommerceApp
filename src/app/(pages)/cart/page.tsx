@@ -101,7 +101,7 @@ export default function Cart() {
   return <>
 
     {isLoading || typeof cartData?.data.products[0]?.product == 'string' ? <Loading /> : (cartData?.numOfCartItems ?? 0) > 0 ?
-      <div className="container  mx-auto p-6 ">
+      <div className="container  mx-auto px-4 md:px-20 py-6">
         <h1 className="text-3xl font-bold mb-2">Shopping Cart</h1>
         <p className="text-gray-500 mb-6">{cartData?.numOfCartItems} items in your cart</p>
 
