@@ -251,7 +251,7 @@ export default function Products() {
                 {/* Sidebar Filters */}
                 <aside className={`
                     w-full md:w-64 shrink-0 space-y-6
-                    md:sticky md:top-25 md:self-start
+                    md:sticky md:top-18 md:self-start
                     ${showFilters ? 'block' : 'hidden md:block'}
                 `}>
                     <Card>

@@ -39,7 +39,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <h1 className="text-xl md:text-2xl"> 
-            <Link href={'/'}> Shop Mart </Link> 
+            <Link href={'/'}> Matgary </Link> 
           </h1>
 
           {/* Desktop Navigation */}
